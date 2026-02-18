@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.env
+venv/
+.venv/
+data/*.duckdb
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+*.log
+.DS_Store
