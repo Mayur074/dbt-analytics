@@ -1,0 +1,11 @@
+ecommerce_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '../data/ecommerce.duckdb'
+      threads: 4
+    prod:
+      type: duckdb
+      path: '../data/ecommerce_prod.duckdb'
+      threads: 8
