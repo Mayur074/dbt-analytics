@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Cleaned and standardized orders from raw source"
+    columns:
+      - name: order_id
+        description: "Unique order identifier"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key to customers"
+        tests:
+          - not_null
+      - name: order_amount
+        description: "Order value in USD"
+        tests:
+          - not_null
+      - name: order_status
+        description: "Current order status"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMPLETED', 'PENDING', 'CANCELLED', 'DELIVERED', 'REFUNDED']
+
+  - name: stg_customers
+    description: "Cleaned and standardized customers from raw source"
+    columns:
+      - name: customer_id
+        description: "Unique customer identifier"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "Customer email address"
+        tests:
+          - unique
+          - not_null
+      - name: customer_segment
+        description: "Customer tier"
+        tests:
+          - accepted_values:
+              values: ['STANDARD', 'PREMIUM', 'VIP', 'ENTERPRISE']
+
+  - name: stg_products
+    description: "Cleaned and standardized products from raw source"
+    columns:
+      - name: product_id
+        description: "Unique product identifier"
+        tests:
+          - unique
+          - not_null
+      - name: unit_price
+        description: "Product price in USD"
+        tests:
+          - not_null
+
+  - name: mart_customer_ltv
+    description: "Customer lifetime value with RFM segmentation"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: ltv_segment
+        tests:
+          - accepted_values:
+              values: ['CHAMPION', 'LOYAL', 'ONE_TIME', 'AT_RISK']
+      - name: total_revenue
+        tests:
+          - not_null
+
+  - name: mart_revenue_analytics
+    description: "Monthly revenue trends with MoM growth"
+    columns:
+      - name: gross_revenue
+        tests:
+          - not_null
