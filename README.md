@@ -6,7 +6,7 @@ A production-grade **analytics engineering project** using dbt and DuckDB implem
 ![DuckDB](https://img.shields.io/badge/DuckDB-1.0-yellow)
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.38-red)
-![CI](https://github.com/yourgithub/dbt-analytics/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Mayur074/dbt-analytics/actions/workflows/ci.yml/badge.svg)
 
 ---
 
@@ -44,7 +44,7 @@ Revenue trends · LTV segments · Channel share · Top customers
 ## Quickstart
 
 ```bash
-git clone https://github.com/yourgithub/dbt-analytics.git
+git clone https://github.com/Mayur074/dbt-analytics.git
 cd dbt-analytics
 pip install -r requirements.txt
 
@@ -79,7 +79,7 @@ dbt-analytics/
 ├── dashboard/
 │   └── app.py                # Streamlit BI dashboard
 ├── tests/
-│   └── test_dbt_analytics.py # 28 unit tests for SQL and config
+│   └── test_dbt_analytics.py # 26 unit tests for SQL and config
 └── requirements.txt
 ```
 

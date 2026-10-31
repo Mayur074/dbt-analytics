@@ -34,11 +34,11 @@ def load_data():
     conn = duckdb.connect(DB_PATH, read_only=True)
     try:
         revenue = conn.execute("""
-            SELECT * FROM mart_revenue_analytics
+            SELECT * FROM main_marts.mart_revenue_analytics
             ORDER BY order_year, order_month
         """).df()
         ltv = conn.execute("""
-            SELECT * FROM mart_customer_ltv
+            SELECT * FROM main_marts.mart_customer_ltv
         """).df()
         return revenue, ltv
     except Exception:
