@@ -2,7 +2,7 @@
 -- Staging layer: clean and standardize raw products data
 
 with source as (
-    select * from {{ ref('raw_products') }}
+    select * from {{ source('raw', 'raw_products') }}
 ),
 
 cleaned as (

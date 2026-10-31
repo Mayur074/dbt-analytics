@@ -2,14 +2,14 @@
 -- Staging layer: clean and standardize raw customers data
 
 with source as (
-    select * from {{ ref('raw_customers') }}
+    select * from {{ source('raw', 'raw_customers') }}
 ),
 
 cleaned as (
     select
         customer_id::varchar                            as customer_id,
-        initcap(trim(first_name))                       as first_name,
-        initcap(trim(last_name))                        as last_name,
+        upper(left(trim(first_name), 1)) || lower(substr(trim(first_name), 2)) as first_name,
+        upper(left(trim(last_name), 1)) || lower(substr(trim(last_name), 2)) as last_name,
         lower(trim(email))                              as email,
         upper(trim(country))                            as country,
         coalesce(upper(trim(segment)), 'STANDARD')      as customer_segment,
